@@ -23,6 +23,15 @@ pip install -r requirements.txt
 
 ## Usage
 
+### Exporting from Google Takeout
+
+1. Go to [Google Takeout](https://takeout.google.com)
+2. Select only "Maps (your places)" data
+3. Choose export format as CSV
+4. Select delivery method (email/download)
+5. Wait for Google to prepare your export
+6. Download the ZIP archive containing your places
+
 ### Basic Conversion
 
 ```bash
