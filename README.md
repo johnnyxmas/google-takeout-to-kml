@@ -84,12 +84,12 @@ The tool will:
 
 ## Configuration
 
-Set environment variables:
+The following settings can be modified by editing the script directly:
 
-```bash
-export GEOCODE_URL="https://your-nominatim-server"
-export USER_AGENT="YourApp/1.0"
-```
+- `GEOCODE_URL`: Nominatim reverse geocoding endpoint (default: "https://nominatim.openstreetmap.org/reverse")
+- `USER_AGENT`: User agent string for API requests (default: "GoogleMapsToKML/1.0")
+- `MAX_RETRIES`: Number of retry attempts for geocoding (default: 3)
+- `CACHE_SIZE`: Size of geocoding cache (default: 1000)
 
 ## Examples
 
