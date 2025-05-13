@@ -172,3 +172,7 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+test.csv
+output.kml
+google_maps_to_kml.log
