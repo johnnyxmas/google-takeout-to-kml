@@ -7,6 +7,32 @@ Convert Google Maps saved places to KML format with advanced features.
 - 🗺️ Convert CSV or ZIP exports to KML
 - 📁 Process multiple CSVs from ZIP archives
 - 🔍 Reverse geocoding for location details
+- 📝 Detailed logging to file and console
+- ❌ Track failed conversions with error reasons
+- 📊 Include failed locations in KML output
+
+## How It Works
+
+1. **Input Processing**:
+   - Parses CSV files from Google Takeout or direct exports
+   - Handles multiple formats (explicit coordinates or URL-embedded)
+   - Processes ZIP archives containing multiple CSVs
+
+2. **Data Conversion**:
+   - Extracts coordinates from URLs or explicit columns
+   - Validates coordinate ranges (-90 to 90 for lat, -180 to 180 for lon)
+   - Performs reverse geocoding (when enabled) to get address details
+
+3. **Error Handling**:
+   - Tracks failed conversions with specific error reasons
+   - Logs detailed error information to `google_maps_to_kml.log`
+   - Includes failed locations in output KML under "Failed Conversions" folder
+
+4. **Output Generation**:
+   - Creates KML files with proper XML structure
+   - Organizes successful locations by category
+   - Preserves original URLs and names
+   - Includes detailed error information for failed conversions
 
 ## Installation
 
@@ -32,6 +58,18 @@ pip install -r requirements.txt
 5. Wait for Google to prepare your export
 6. Download the ZIP archive containing your places
 
+### Supported CSV Formats
+
+The script supports:
+1. CSV with explicit Latitude/Longitude columns
+2. Google Takeout format with coordinates in URLs
+
+Column names can vary (case-insensitive):
+- Name/Title
+- URL/Google Maps URL
+- Latitude/lat
+- Longitude/lon/lng
+
 ### Basic Conversion
 
 ```bash
@@ -49,6 +87,13 @@ python3 google_maps_to_kml.py takeout.zip output_directory/
 
 ```bash
 python3 google_maps_to_kml.py --geocode input.csv output.kml
+```
+
+### Debug Mode
+
+```bash
+# Enables detailed logging
+python3 google_maps_to_kml.py --debug input.csv output.kml
 ```
 
 ## Output Format
@@ -69,6 +114,7 @@ Each KML contains:
 - Original URLs
 - Location details (with --geocode)
 - Categorized placemarks
+- Failed conversions section (with error details)
 
 ## Error Handling
 
@@ -77,6 +123,8 @@ The tool will:
 - Skip malformed rows with warnings
 - Continue after API errors
 - Provide clear error messages
+- Track failed conversions with reasons
+- Log detailed information to `google_maps_to_kml.log`
 - Exit with status codes:
   - 0: Success
   - 1: Fatal error
@@ -103,3 +151,9 @@ Convert single CSV with details:
 
 ```bash
 python3 google_maps_to_kml.py --geocode saved_places.csv map.kml
+```
+
+Debug mode with detailed logging:
+
+```bash
+python3 google_maps_to_kml.py --debug test.csv output.kml
