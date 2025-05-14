@@ -175,4 +175,8 @@ cython_debug/
 
 test.csv
 output.kml
-google_maps_to_kml.log
+convert.log
+example.kmz
+layers/output_do.kml
+layers/output_do.kmz
+output.kmz
