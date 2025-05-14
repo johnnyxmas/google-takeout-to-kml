@@ -47,6 +47,33 @@ python convert.py --geocode --debug input.csv output.kmz
   - Both KML and KMZ versions of each layer
   - Organized by place type (hotels, restaurants, activities)
 
+## How It Works
+
+The script processes Google Maps data through these steps:
+
+1. **Input Parsing**:
+   - Handles both CSV files and ZIP archives
+   - Extracts place names, URLs, and coordinates
+   - Supports Google Takeout exports and manual exports
+
+2. **Data Processing**:
+   - Categorizes places into layers (Sleep/Eat/Do)
+   - Optionally reverse geocodes coordinates to addresses
+   - Preserves original metadata and URLs
+   - Tracks failed conversions with error details
+
+3. **KML Generation**:
+   - Creates valid KML 2.2 structure
+   - Uses appropriate Google Maps icons for each place type
+   - Organizes places into logical folders
+   - Includes clickable links back to Google Maps
+
+4. **Output Options**:
+   - Default KMZ output (compressed KML + resources)
+   - Optional KML output for compatibility
+   - Creates both combined and layer-separated files
+   - Generates a `layers` subdirectory with categorized outputs
+
 ## Layer Organization
 
 Places are automatically categorized into:
